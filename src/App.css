@@ -1,38 +1,157 @@
-.App {
-  text-align: center;
+.Note-Container{
+    display: flex;
+    flex-wrap: wrap;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.header{
+    background-color: rgb(235, 235, 44);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+.search{
+    display: flex;
+    align-items: center;
+    border: 1px solid gray;
+    border-radius: 3px;
+    padding-left: 10px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.search-box{
+    border: none;
+    background-color: transparent;
+    outline: none;
+    
 }
 
-.App-link {
-  color: #61dafb;
+.search-container{
+    display: flex;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.header h1{
+    margin: 0.5rem;
+}
+
+.form-container{
+    display: flex;
+    justify-content: center;
+}
+
+.clicklble-text{
+    border: 1px solid gray;
+    padding: 0.5rem;
+    border-radius: 3px;
+    color: gray;
+}
+
+.Input{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+    position: relative;
+}
+
+.Input input{
+    width: 100%;
+    height: 2rem;
+    max-width: 300px;
+    min-width: 300px;
+    outline: none;
+    border-bottom: none;
+    border-top: 1px solid gray;
+    border-right: 1px solid gray;
+    border-left: 1px solid gray;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+.Input textarea{
+    padding: 5px;
+    border-top: none;
+    resize: none;
+    width: 100%;
+    max-width: 300px;
+    outline: none;
+    border-radius: 3px;
+}
+
+.button{
+    position: absolute;
+    right: 17px;
+    bottom: -17px;
+    color: rgb(235, 235, 44);
+    cursor: pointer;
+}
+.button:hover{
+    color: yellow;
+}
+.button:active{
+    color: gray;
+}
+.Note{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    padding: 1rem;
+    color: black;
+    background-color: rgb(216, 250, 92);
+    min-height: 120px;
+    width: 15rem;
+}
+
+.Note h4,p{
+    margin: 0;
+    white-space: pre-wrap;
+    width: 100%;
+    word-wrap: break-word;
+}
+
+.btn-container{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.delete-btn{
+    cursor: pointer;
+}
+
+.Footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    margin-bottom: 0.5rem;
+}
+
+.Footer p{
+    text-align: center;
+}
+
+/* dark mode */
+
+.toggle-on{
+    color: white;
+    background-color: black;
+}
+
+.toggle-on .header{
+    background-color: black;
+}
+
+.toggle-on .Note-Container{
+    min-height: 77.6vh;
+    align-items: flex-start;
+}
+
+.toggle-on .search{
+    background-color: white;
+}
+
+.toggle-on .search-icon{
+    color: black;
 }
