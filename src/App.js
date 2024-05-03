@@ -4,35 +4,41 @@ import Header from "./component/Header";
 import Note from "./component/Note";
 import Footer from "./component/Footer";
 import Input from "./component/Input";
-import { themeContext } from "./contex/theme-Contex"
+import EditNote from "./component/EditNote";
+import { themeContext } from "./contex/theme-Contex";
 import { NotesContext } from "./contex/Notes-Context";
 function App() {
   const { darkMode } = useContext(themeContext);
   const [searchValue, setSearchValue] = useState("");
-  const {notes} = useContext(NotesContext);
+  const [editModeOn, setEditModeOn] = useState({ mode: false, id: "" });
+  const { notes } = useContext(NotesContext);
 
   return (
-      <div className={darkMode && "toggle-on"}>
-        <Header
-          handleSearch={setSearchValue}
-        />
-        <Input/>
-        <div className="Note-Container">
-          {notes
-            .filter((note) => note.text.toLowerCase().includes(searchValue))
-            .map((item, index) => {
-              return (
-                <Note
-                  id={index}
-                  key={index}
-                  title={item.title}
-                  content={item.text}
-                />
-              );
-            })}
-        </div>
-        <Footer />
+    <div className={darkMode && "toggle-on"}>
+      <Header handleSearch={setSearchValue} />
+      <Input />
+      <div className="Note-Container">
+        {notes
+          .filter((note) => note.text.toLowerCase().includes(searchValue))
+          .map((item, index) => {
+            return (
+              <Note
+                setEditModeOn={setEditModeOn}
+                editModeOn={editModeOn}
+                id={index}
+                key={index}
+                title={item.title}
+                content={item.text}
+              />
+            );
+          })}
       </div>
+
+      {editModeOn.mode && (
+        <EditNote setEditModeOn={setEditModeOn} editModeOn={editModeOn} />
+      )}
+      <Footer />
+    </div>
   );
 }
 
