@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Search from './Search'
 import ToggleOnIcon from '@mui/icons-material/ToggleOn';
 import ToggleOffIcon from '@mui/icons-material/ToggleOff';
+import { themeContext } from '../contex/theme-Contex';
 
-function Header({handleSearch,isToggleOn,setIsToggleOn}) {
+function Header({ handleSearch }) {
+    const { darkMode, setDarkMode } = useContext(themeContext);
     return (
         <div className='header' >
             <div className='name'>
@@ -11,8 +13,8 @@ function Header({handleSearch,isToggleOn,setIsToggleOn}) {
             </div>
             <div className='search-container'>
                 <Search handleSearch={handleSearch} />
-                {isToggleOn ? <ToggleOnIcon onClick={()=>setIsToggleOn((prevState)=>!prevState)} className='toggle-on' sx={{ mr: '10px', ml:'10px'}} fontSize='large'/> :
-                <ToggleOffIcon onClick={()=>setIsToggleOn((prevState)=>!prevState)} className='toggle-off' sx={{ mr: '10px', ml:'10px'}} fontSize='large'/>}
+                {darkMode ? <ToggleOnIcon onClick={ setDarkMode} className='toggle-on' sx={{ mr: '10px', ml: '10px', cursor:"pointer"}} fontSize='large'/> :
+                <ToggleOffIcon onClick={setDarkMode} className='toggle-off' sx={{ mr: '10px', ml:'10px', cursor:"pointer"}} fontSize='large'/>}
             </div>
                
         </div>

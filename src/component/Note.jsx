@@ -1,10 +1,11 @@
 import React from 'react';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import { useContext } from 'react';
+import { NotesContext } from '../contex/Notes-Context';
 
-function Note({ title, content, handleDelete, id }) {
-  function handleClick() {
-    handleDelete(id)
-  }
+function Note({ title, content, id }) {
+  const date = new Date();
+  const { deleteNote } = useContext(NotesContext);
   return (
     <div className='Note'>
       <div className='note-content'>
@@ -12,7 +13,8 @@ function Note({ title, content, handleDelete, id }) {
         <p>{content}</p> 
       </div>
       <div className='btn-container'>
-        <DeleteForeverIcon onClick={handleClick} className='delete-btn' fontSize='small'/>
+        <div>{date.toLocaleDateString()}</div>
+        <DeleteForeverIcon onClick={()=>deleteNote(id)} className='delete-btn' fontSize='small'/>
       </div>
     </div>
   )
