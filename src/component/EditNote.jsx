@@ -34,24 +34,29 @@ function EditNote({ editModeOn, setEditModeOn }) {
   };
 
   return (
-    <div className="form-container">
-      <form className="Input" action="">
-        <input
-          onChange={(e) => setNewState({ ...newState, title: e.target.value })}
-          value={newState.title}
-          type="text"
-          placeholder="title"
-        />
-        <textarea
-          onChange={(e) => setNewState({ ...newState, text: e.target.value })}
-          value={newState.text}
-          name=""
-          id=""
-          placeholder="text"
-        ></textarea>
-        <button onClick={handleEditNote}>save</button>
-        <button onClick={handleCancelEditing}>cancel</button>
-      </form>
+    <div className="edit-modal">
+      <h1 style={{ textAlign: "center" }}>edit note</h1>
+      <div className="form-container">
+        <form className="Input" action="">
+          <input
+            onChange={(e) =>
+              setNewState({ ...newState, title: e.target.value })
+            }
+            value={newState.title}
+            type="text"
+            placeholder="title"
+          />
+          <textarea
+            onChange={(e) => setNewState({ ...newState, text: e.target.value })}
+            value={newState.text}
+            name=""
+            id=""
+            placeholder="text"
+          ></textarea>
+          <button onClick={handleEditNote}>save</button>
+          <button onClick={handleCancelEditing}>cancel</button>
+        </form>
+      </div>
     </div>
   );
 }

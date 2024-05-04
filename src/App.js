@@ -16,28 +16,30 @@ function App() {
   return (
     <div className={darkMode && "toggle-on"}>
       <Header handleSearch={setSearchValue} />
-      <Input />
-      <div className="Note-Container">
-        {notes
-          .filter((note) => note.text.toLowerCase().includes(searchValue))
-          .map((item, index) => {
-            return (
-              <Note
-                setEditModeOn={setEditModeOn}
-                editModeOn={editModeOn}
-                id={index}
-                key={index}
-                title={item.title}
-                content={item.text}
-              />
-            );
-          })}
-      </div>
+      <div className="main-container">
+        <Input />
+        <div className="Note-Container">
+          {notes
+            .filter((note) => note.text.toLowerCase().includes(searchValue))
+            .map((item, index) => {
+              return (
+                <Note
+                  setEditModeOn={setEditModeOn}
+                  editModeOn={editModeOn}
+                  id={index}
+                  key={index}
+                  title={item.title}
+                  content={item.text}
+                />
+              );
+            })}
+        </div>
 
-      {editModeOn.mode && (
-        <EditNote setEditModeOn={setEditModeOn} editModeOn={editModeOn} />
-      )}
-      <Footer />
+        {editModeOn.mode && (
+          <EditNote setEditModeOn={setEditModeOn} editModeOn={editModeOn} />
+        )}
+        <Footer />
+      </div>
     </div>
   );
 }
